@@ -1,0 +1,10 @@
+<h1>Merb.com awesome!</h1>
+
+<br /><br />
+
+Pages (<%= @pages.size %>):<br/ >
+<% @pages.each do |page| %>
+	<%= page.name %><br />
+<% end %>
+
+<%= image_tag asset_url('logo.jpg') %>

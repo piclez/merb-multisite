@@ -1,0 +1,36 @@
+h1. Merb MultiSite
+
+Simple Merb MultiSite demo app. Each site has your own views located in /sites/[current_site]/.
+
+
+h2. Instructions for setup domains
+
+Add your domains and subdomains in your /etc/hosts:
+
+<pre><code>
+127.0.0.1	merbmultisite.com
+127.0.0.1	www.merbmultisite.com
+127.0.0.1	www.merbmultisite.net # Invalid site
+127.0.0.1	www.merb.com
+</code></pre>
+
+Create your site and add a few pages:
+
+Site.create(:name => 'Merb Multisite', :domain => 'merbmultisite.com', :path => 'merb_multisite')
+
+
+h2. Site views and assets
+
+Views are located in /sites/[path]/
+
+Assets are located in /public/sites/[path]/
+
+Image helper:
+
+<%= image_tag asset_url('logo.jpg') %>
+
+
+h2. TODOS
+
+Get all specs working.
+Test with merb-auth-slice-multisite.

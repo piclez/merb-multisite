@@ -1,0 +1,12 @@
+<h1>Welcome to site <%= @current_site.name %>.</h1>
+
+<br /><br />
+
+<h2>Total pages: <%= @pages.size %></h2><br/ >
+<ul>
+  <% @pages.each do |page| %>
+    <li><%= page.name %></li>
+  <% end %>
+</ul>
+
+<%= image_tag asset_url('logo.jpg') %>
