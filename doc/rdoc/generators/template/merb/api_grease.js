@@ -51,7 +51,7 @@ function loadUrlParams(url_param){
 function updateUrlParams(anchor_id, name){
 	//Also setting the page title
 	//window.document.title = name + " method - MerbBrain.com ";
-	
+
 	//updating the window location
 	var current_href = window.location.href;
 	//var m_name = name.replace("?","?");
@@ -64,33 +64,33 @@ function updateUrlParams(anchor_id, name){
 
 //does as it says...
 function hookUpActiveSearch(){
-	
+
 	var s_field = $('searchForm').getInputs('text')[0];
 	//var s_field = document.forms[0].searchText;
 	Event.observe(s_field, 'keydown', function(event) {
 		var el = Event.element(event);
 		var key = event.which || event.keyCode;
-		
+
 		switch (key) {
 			case Event.KEY_RETURN:
 				forceLoadOfContentAnchor(getCurrentAnchor());
 				Event.stop(event);
 			break;
-			
+
 			case Event.KEY_UP:
 				scrollListToElementOffset(getCurrentAnchor(),-1);
 			break;
-			
+
 			case Event.KEY_DOWN:
 				scrollListToElementOffset(getCurrentAnchor(),1);
 			break;
-			
+
 			default:
 			break;
 		}
 
 	});
-	
+
 	Event.observe(s_field, 'keyup', function(event) {
 		var el = Event.element(event);
 		var key = event.which || event.keyCode;
@@ -98,21 +98,21 @@ function hookUpActiveSearch(){
 			case Event.KEY_RETURN:
 				Event.stop(event);
 			break;
-			
+
 			case Event.KEY_UP:
 			break;
-			
+
 			case Event.KEY_DOWN:
 			break;
-			
+
 			default:
 				scrollToName(el.value);
 				setSavedSearch(getCurrentTab(), el.value);
 			break;
 		}
-		
+
 	});
-	
+
 	Event.observe(s_field, 'keypress', function(event){
 		var el = Event.element(event);
 		var key = event.which || event.keyCode;
@@ -120,13 +120,13 @@ function hookUpActiveSearch(){
 			case Event.KEY_RETURN:
 				Event.stop(event);
 			break;
-			
+
 			default:
 			break;
 		}
-		
+
 	});
-	
+
 	//Event.observe(document, 'keypress', function(event){
 	//	var key = event.which || event.keyCode;
 	//	if (key == Event.KEY_TAB){
@@ -137,7 +137,7 @@ function hookUpActiveSearch(){
 }
 
 function hookUpTabs(){
-	
+
 	var tabs = getTabs();
 	for(x=0; x < tabs.length; x++)
 	{
@@ -162,14 +162,14 @@ function loadDefaults(){
 }
 
 function resizeDivs(){
-	var inner_height = 700; 
+	var inner_height = 700;
 	if (window.innerHeight){
 		inner_height = window.innerHeight; //all browsers except IE use this to determine the space available inside a window. Thank you Microsoft!!
 	}else{
 		if(document.documentElement.clientHeight > 0){ //IE uses this in 'strict' mode
 		inner_height = document.documentElement.clientHeight;
 		}else{
-			inner_height = document.body.clientHeight; //IE uses this in 'quirks' mode 
+			inner_height = document.body.clientHeight; //IE uses this in 'quirks' mode
 		}
 	}
 	$('rdocContent').style.height = (inner_height - 92) + "px";//Thankfully all browsers can agree on how to set the height of a div
@@ -188,7 +188,7 @@ function setActiveTabAndLoadContent(current_tab){
 			scrollToName(getSavedSearch("classes"));
 			setSearchFocus();
 			break;
-		
+
 		case "files":
 			setCurrentTab("files");
 		    loadScrollerContent('fr_file_index.html');
@@ -196,7 +196,7 @@ function setActiveTabAndLoadContent(current_tab){
 			scrollToName(getSavedSearch("files"));
 			setSearchFocus();
 			break;
-			
+
 		case "methods":
 			setCurrentTab("methods");
 			loadScrollerContent('fr_method_index.html');
@@ -204,7 +204,7 @@ function setActiveTabAndLoadContent(current_tab){
 			scrollToName(getSavedSearch("methods"));
 			setSearchFocus();
 			break;
-		
+
 		default:
 			break;
 	}
@@ -291,27 +291,27 @@ function getSavedSearch(tab_name){
 
 
 function setListScrollerContent(s){
-	
+
 	$('listScroller').innerHTML = s;
 }
 
 function setMainContent(s){
-	
+
 	$('rdocContent').innerHTML = s;
 }
 
 function setSearchFieldValue(s){
-	
+
 	document.forms[0].searchText.value = s;
 }
 
 function getSearchFieldValue(){
-	
+
 	return Form.Element.getValue('searchText');
 }
 
 function setSearchFocus(){
-	
+
 	document.forms[0].searchText.focus();
 }
 
@@ -348,7 +348,7 @@ function loadScrollerContent(url){
 //called primarily from the links inside the scroller list
 //loads the main page div then jumps to the anchor/element with id
 function loadContent(url, anchor_id){
-	
+
 	var mainHtml = new Ajax.Request(url, {
 	 method: 'get',
 	  onLoading: changeLoadingStatus("on"),
@@ -409,7 +409,7 @@ function forceLoadOfContent(index_to_load){
 }
 
 function forceLoadOfContentAnchor(anchor_id){
-	
+
 	var load_element = $(anchor_id);
 	if (load_element != null){
 		var el_text = load_element.innerHTML.strip();
@@ -456,7 +456,7 @@ function scrollToName(searcher_name){
 	var a_array = scroller.getElementsByTagName('a');
 
 	if (!searcher_name.match(new RegExp(/\s+/))){ //if searcher name is blank
-		
+
 		var searcher_pattern = new RegExp("^"+searcher_name, "i"); //the "i" is for case INsensitive
 		var found_index = -1;
 
@@ -480,7 +480,7 @@ function scrollToName(searcher_name){
 			scrollListToAnchor(a_array[found_index].id);//scroll to the item
 			setListActiveAnchor(a_array[found_index].id);//highlight the item
 		}
-	}else{ //since searcher name is blank 
+	}else{ //since searcher name is blank
 		//scrollListToIndex(a_array, 0);//scroll to the item
 		//setListActiveItem(a_array, 0);//highlight the item
 	}
@@ -495,7 +495,7 @@ function scrollToAnchor(anchor_id){
 }
 
 function getY(element){
-	
+
 	var y = 0;
 	for( var e = element; e; e = e.offsetParent)//iterate the offset Parents
 	{
@@ -507,7 +507,7 @@ function getY(element){
 }
 
 //function setListActiveItem(item_array, active_index){
-//	
+//
 //	item_array[getCurrentIndex()].className = "";
 //	setCurrentIndex(active_index);
 //	item_array[getCurrentIndex()].className = "activeA"; //setting the active class name
@@ -519,7 +519,7 @@ function setListActiveAnchor(active_anchor){
 	}
 	setCurrentAnchor(active_anchor);
 	$(getCurrentAnchor()).className = "activeA";
-	
+
 }
 
 //handles the scrolling of the list and setting of the current index
@@ -570,7 +570,7 @@ function changeLoadingStatus(status){
 //************* Misc functions (mostly from the old rdocs) ***********************
 //snagged code from the old templating system
 function toggleSource( id ){
-	
+
          var elem
          var link
 
@@ -601,7 +601,7 @@ function toggleSource( id ){
 
 function openCode( url ){
      window.open( url, "SOURCE_CODE", "width=400,height=400,scrollbars=yes" )
-}	
+}
 
 //this function handles the ajax calling and afterits loaded the jumping to the anchor...
 function jsHref(url){
@@ -615,12 +615,12 @@ function jsHref(url){
 
 //function comparePatterns(string, regexp){
 //	var direction = 0;
-//	
-//	
+//
+//
 //	return (direction)
 //}
 
-////returns the index of the element 
+////returns the index of the element
 //function binSearcher(regexp_pattern, list, start_index, stop_index){
 //	//divide the list in half
 //	var split_point = 0;
@@ -633,7 +633,7 @@ function jsHref(url){
 //			return (binSearcher(regexp_pattern, list, split_point, stop_index));
 //		else
 //			return(split_point);
-//	
+//
 //}
 
 

@@ -4,5 +4,5 @@ class Pages < Sites
     @pages = current_site.pages
     render
   end
-  
+
 end
