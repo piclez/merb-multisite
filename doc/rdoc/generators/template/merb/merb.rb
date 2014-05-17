@@ -228,7 +228,7 @@ HTML
 
 
 #### This is not used but kept for historical purposes
-########################## Source code ########################## 
+########################## Source code ##########################
 # Separate page onlye
 
 SRC_PAGE = <<HTML
@@ -294,7 +294,7 @@ INDEX = <<HTML
  	<meta name="author" content="created by Brian Chamberlain. You can contact me using 'blchamberlain' on the gmail." />
 	<meta name="keywords" content="merb, ruby, purple, monkey, dishwasher" />
 	<title>Merb | %title% API Documentation</title>
-	<link rel="stylesheet" href="http://merbivore.com/documentation/stylesheet.css" type="text/css" media="screen" />    
+	<link rel="stylesheet" href="http://merbivore.com/documentation/stylesheet.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="http://merbivore.com/documentation/prototype.js" ></script>
 	<script type="text/javascript" src="http://merbivore.com/documentation/api_grease.js" ></script>
 </head>
@@ -304,7 +304,7 @@ INDEX = <<HTML
 	<li>classes</li>
 	<li>files</li>
 	<li id="loadingStatus" style="display:none;">	loading...</li>
-</ul>	
+</ul>
 <div id="listFrame">
 	<div id="listSearch">
 		<form id="searchForm" method="get" action="#" onsubmit="return false">
@@ -313,7 +313,7 @@ INDEX = <<HTML
 	</div>
 	<div id="listScroller">
 	    Loading via ajax... this could take a sec.
-	</div>	
+	</div>
 </div>
 <div id="browserBar">
 	&nbsp;&nbsp;&nbsp;<span id="browserBarInfo">%title% README</span>
@@ -324,7 +324,7 @@ INDEX = <<HTML
 <div id="floater">
 <strong>Documentation for %title% </strong><a href="#" onmouseover="$('tips').show();" onmouseout="$('tips').hide();">usage tips</a>
 <div id="tips" style="position:absolute;width:350px;top:15px;right:20px;padding:5px;border:1px solid #333;background-color:#fafafa;display:none;">
-	<p><strong>Some tips</strong> 
+	<p><strong>Some tips</strong>
 		<ul>
 			<li> Up/Down keys move through the search list</li>
 			<li> Return/enter key loads selected item</li>

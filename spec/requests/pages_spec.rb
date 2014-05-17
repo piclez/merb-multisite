@@ -5,7 +5,7 @@ describe "/pages" do
     Site.all.destroy!
     Page.all.destroy!
   end
-  
+
   it "should display 2 pages for www.merbmultisite.com" do
     site = Factory.create(:site)
     page1 = Factory.create(:page, :site => site)
@@ -15,7 +15,7 @@ describe "/pages" do
     response.should have_xpath('//ul/li[2]') # We have at least 2 pages
     response.should have_selector("h1:contains('Welcome to site Merb Multisite.')")
   end
-  
+
   it "should display 1 page for www.merb.com" do
     site2 = Factory.create(:site, :domain => "merb.com", :path => "merb")
     page3 = Factory.create(:page, :site => site2, :name => "Contact")
@@ -24,7 +24,7 @@ describe "/pages" do
     response.should have_xpath('//ul/li[1]') # We have at least 1 page
     response.should have_selector("h1:contains('Merb.com awesome!')")
   end
-  
+
   it "should display page not found for www.merbmultisite.net" do
     response = request("/pages", {'HTTP_HOST' => 'www.merbmultisite.net'})
     response.should be_missing

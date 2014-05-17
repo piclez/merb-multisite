@@ -4,5 +4,5 @@ class Application < Merb::Controller
   def current_site
     @current_site ||= Site.first(:domain => request.domain)
   end
-  
+
 end
